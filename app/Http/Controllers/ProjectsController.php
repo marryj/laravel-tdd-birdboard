@@ -16,14 +16,18 @@ class ProjectsController extends Controller
 
     public function store()
     {
-        //Validate
         $attributes = request()->validate([
             'title' => 'required',
             'description' => 'required',
         ]);
 
-        Project::create($attributes);
+        auth()->user()->projects()->create($attributes);
 
         return redirect('projects.index');
+    }
+
+    public function show(Project $project)
+    {
+        return view('projects.show', compact('project'));
     }
 }
