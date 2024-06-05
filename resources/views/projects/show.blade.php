@@ -1,11 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Page Title</title>
-</head>
-<body>
+@extends('layouts.app')
 
-<h1>{{$project->title}}</h1>
-<div>{{$project->description}}</div>
-</body>
-</html>
+@section('content')
+
+    <header class="flex items-center mb-3 py-4">
+        <div class="flex justify-between w-full items-center">
+            <p class="text-gray-500 text-sm font-normal">
+                <a href="/projects">My Projects</a> / {{ $project->title }}
+            </p>
+            <a class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" href="/projects/create">New Project</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="lg:flex -mx-3">
+            <div class="lg:w-3/4 px-3 mb-6">
+               <div class="mb-6">
+                   <h2 class="text-lg text-gray-500 font-normal mb-3">
+                       Tasks
+                   </h2>
+                   <div class="card mb-3">Task Lorem ipsum</div>
+                   <div class="card mb-3">Task Lorem ipsum</div>
+                   <div class="card mb-3">Task Lorem ipsum</div>
+                   <div class="card">Task Lorem ipsum</div>
+               </div>
+
+                <div>
+                    <h2 class="text-lg text-gray-500 font-normal mb-3">General Notes</h2>
+                    <textarea class="card w-full" style="min-height: 200px">Lorem ipsum</textarea>
+                </div>
+            </div>
+
+            <div class="lg:w-1/4 px-3">
+                @include('projects.card')
+
+            </div>
+        </div>
+    </main>
+
+
+
+@endsection
