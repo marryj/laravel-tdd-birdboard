@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use Illuminate\Support\Facades\Gate;
 
 class ProjectsController extends Controller
 {
@@ -33,19 +34,15 @@ class ProjectsController extends Controller
 
     public function show(Project $project)
     {
-        if (auth()->user()->isNot($project->owner)) {
-            abort(403);
-        }
+        Gate::authorize('update', $project);
 
         return view('projects.show', compact('project'));
     }
 
     public function update(Project $project)
     {
-        if (auth()->user()->isNot($project->owner)) {
-            abort(403);
-        }
-        
+        Gate::authorize('update', $project);
+
         $project->update(request(['notes']));
 
         return redirect($project->path());
