@@ -4,7 +4,7 @@
     <header class="flex items-center mb-3 py-4">
         <div class="flex justify-between w-full items-center">
             <h2 class="text-gray-500 text-sm font-normal">My Projects</h2>
-            <a class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" href="/projects/create">New Project</a>
+            <a class="button" href="/projects/create">New Project</a>
         </div>
     </header>
 
