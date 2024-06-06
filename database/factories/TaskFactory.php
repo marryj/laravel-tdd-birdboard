@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Projects>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Task>
  */
-class ProjectFactory extends Factory
+class TaskFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,8 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(4),
-            'description' => fake()->sentence(4),
-            'owner_id' => User::factory(),
+            'body' => fake()->sentence,
+            'project_id' => Project::factory(),
         ];
     }
 }
