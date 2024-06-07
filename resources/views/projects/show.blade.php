@@ -8,7 +8,7 @@
                 <a href="/projects">My Projects</a> / {{ $project->title }}
             </p>
             <a class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-               href="/projects/create">New Project</a>
+               href="{{$project->path()}}/edit">Edit Project</a>
         </div>
     </header>
 
@@ -58,12 +58,13 @@
                         >{{$project->notes}}</textarea>
                         <button type="submit" class="button">Save</button>
                     </form>
+
+                    @include('errors')
                 </div>
             </div>
 
             <div class="lg:w-1/4 px-3">
                 @include('projects.card')
-
             </div>
         </div>
     </main>

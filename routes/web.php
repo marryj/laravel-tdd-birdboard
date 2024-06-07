@@ -12,6 +12,7 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get("projects", 'App\Http\Controllers\ProjectsController@index')->name('projects.index');
     Route::get("projects/create", 'App\Http\Controllers\ProjectsController@create')->name('projects.create');
     Route::get("projects/{project}", 'App\Http\Controllers\ProjectsController@show')->name('projects.show');
+    Route::get("projects/{project}/edit", 'App\Http\Controllers\ProjectsController@edit');
     Route::patch("projects/{project}", 'App\Http\Controllers\ProjectsController@update');
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
