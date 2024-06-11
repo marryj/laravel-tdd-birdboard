@@ -9,7 +9,7 @@ use App\Models\User;
 class ProjectFactory
 {
 
-    protected $tasksCount = 1;
+    protected int $tasksCount = 0;
 
     protected User $user;
 

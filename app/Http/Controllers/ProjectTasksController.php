@@ -25,14 +25,9 @@ class ProjectTasksController extends Controller
     {
         Gate::authorize('update', $project);
 
-        request()->validate([
-            'body' => 'required',
-        ]);
+        $task->update(request()->validate(['body' => 'required']));
 
-        $task->update([
-            'body' => request('body'),
-            'completed' => request()->has('completed')// checkbox: if it`s not checked you won`t see it
-        ]);
+        request('completed') ? $task->complete() : $task->incomplete();
 
         return redirect($project->path());
     }

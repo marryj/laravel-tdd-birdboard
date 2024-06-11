@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Project extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        RecordActivity;
 
     public $guarded = [];
 
@@ -25,12 +26,16 @@ class Project extends Model
 
     public function addTask($body)
     {
-        return $this->tasks()->create(compact('body'));
+        return $this->tasks()->create(
+            [
+                'body' => $body,
+                'project_id' => $this->id
+            ]
+        );
     }
 
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
     }
-
 }
