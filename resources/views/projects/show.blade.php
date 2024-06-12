@@ -9,6 +9,22 @@
             </p>
             <a class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                href="{{$project->path()}}/edit">Edit Project</a>
+
+            <div class="flex items-center">
+                @foreach ($project->members as $member)
+                    <img
+                            src="{{ gravatar_url($member->email) }}"
+                            alt="{{ $member->name }}'s avatar"
+                            class="rounded-full w-8 mr-2">
+                @endforeach
+
+                <img
+                        src="{{ gravatar_url($project->owner->email) }}"
+                        alt="{{ $project->owner->name }}'s avatar"
+                        class="rounded-full w-8 mr-2">
+
+                <a href="{{ $project->path().'/edit' }}" class="button ml-4">Edit Project</a>
+            </div>
         </div>
     </header>
 
