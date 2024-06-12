@@ -51,4 +51,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function accessibleProjects()
+    {
+        $tmp = Project::where('owner_id', $this->id)
+            ->orWhereHas('members', function ($query) {
+                $query->where('user_id', $this->id);
+            });
+        return Project::where('owner_id', $this->id)
+            ->orWhereHas('members', function ($query) {
+                $query->where('user_id', $this->id);
+            })
+            ->get();
+    }
 }

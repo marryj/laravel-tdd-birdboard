@@ -9,7 +9,7 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-        $projects = auth()->user()->projects;
+        $projects = auth()->user()->accessibleProjects();
 
         return view("projects.index", compact("projects"));
     }
@@ -62,7 +62,7 @@ class ProjectsController extends Controller
     public function destroy(Project $project)
     {
         Gate::authorize('delete', $project);
-        
+
         $project->delete();
 
         return redirect('/projects');
