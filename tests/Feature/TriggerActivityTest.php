@@ -7,7 +7,7 @@ use App\Models\Task;
 use Facades\Tests\Setup\ProjectFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use function PHPUnit\Framework\assertEquals;
+
 
 class TriggerActivityTest extends TestCase
 {
@@ -45,7 +45,7 @@ class TriggerActivityTest extends TestCase
                 'after' => ['title' => 'Changed'],
             ];
 
-            assertEquals($expected, $activity->changes);
+            self::assertEquals($expected, $activity->changes);
         });
 
     }

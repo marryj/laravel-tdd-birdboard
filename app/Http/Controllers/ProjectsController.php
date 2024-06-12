@@ -58,4 +58,13 @@ class ProjectsController extends Controller
 
         return redirect($project->path());
     }
+
+    public function destroy(Project $project)
+    {
+        Gate::authorize('delete', $project);
+        
+        $project->delete();
+
+        return redirect('/projects');
+    }
 }

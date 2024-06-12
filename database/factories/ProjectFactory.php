@@ -23,4 +23,11 @@ class ProjectFactory extends Factory
             'owner_id' => User::factory(),
         ];
     }
+
+    public function ownedBy(User $user)
+    {
+        return $this->state(fn(array $attributes) => [
+            'owner_id' => $user,
+        ]);
+    }
 }
